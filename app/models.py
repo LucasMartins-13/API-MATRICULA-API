@@ -7,24 +7,12 @@ class Aluno(Base):
     id = Column(Integer, primary_key=True, index=True)
     nome = Column(String, nullable=False)
     email = Column(String, unique=True, index=True, nullable=False)
-    
-    #colocar matricula no aluno -- 
-
-
-
-
-    #atalho????
-    #atalho????
-    #atalho????
-
     matriculas = relationship("Matricula", back_populates="aluno")
 
 class Curso(Base):
     __tablename__ = "cursos"
     id = Column(Integer, primary_key=True, index=True)
     titulo = Column(String, nullable=False)
-    
-    #atalho????
     matriculas = relationship("Matricula", back_populates="curso")
 
 class Matricula(Base):
@@ -33,7 +21,7 @@ class Matricula(Base):
     aluno_id = Column(Integer, ForeignKey("alunos.id"), nullable=False)
     curso_id = Column(Integer, ForeignKey("cursos.id"), nullable=False)
     
-    # NOVO CAMPO: Padrão é "ativa"
+    #padrao
     status = Column(String, default="ativa", nullable=False) 
 
     aluno = relationship("Aluno", back_populates="matriculas")
