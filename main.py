@@ -12,7 +12,7 @@ from app.routes.cursos import (
     buscar as bc, 
     atualizar as ac, 
     deletar as dc,
-    listar_alunos as lac 
+
 )
 
 #Alunos
@@ -52,7 +52,6 @@ app.include_router(lc.router, prefix="/cursos", tags=["Cursos"])
 app.include_router(bc.router, prefix="/cursos", tags=["Cursos"])
 app.include_router(ac.router, prefix="/cursos", tags=["Cursos"])
 app.include_router(dc.router, prefix="/cursos", tags=["Cursos"])
-app.include_router(lac.router, prefix="/cursos", tags=["Cursos"])
 
 #Alunos
 app.include_router(ca.router, prefix="/alunos", tags=["Alunos"])

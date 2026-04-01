@@ -1,6 +1,7 @@
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
 import app.models as models
+import app.database as database, app.models as models, app.schemas as schemas
 from app.crud import matricula_crud
 
 def realizar_matricula(db: Session, matricula_dados):

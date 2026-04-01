@@ -1,6 +1,7 @@
-from fastapi import APIRouter, Depends, Session
-import app.database as database, app.schemas as schemas
-from app.services import matricula_service 
+from fastapi import APIRouter, Depends, HTTPException 
+from sqlalchemy.orm import Session                   
+import app.database as database, app.models as models, app.schemas as schemas
+from app.services import matricula_service
 
 router = APIRouter()
 
