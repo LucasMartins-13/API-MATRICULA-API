@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, status, Form
+from typing import List, Optional
 from sqlalchemy.orm import Session
 import app.database as database, app.models as models, app.schemas as schemas
 
@@ -8,5 +9,5 @@ router = APIRouter()
 def buscar_aluno(aluno_id: int, db: Session = Depends(database.get_db)):
     aluno = db.query(models.Aluno).filter(models.Aluno.id == aluno_id).first()
     if not aluno:
-        raise HTTPException(status_code=404, detail="Aluno não encontrado")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Aluno não encontrado")
     return aluno

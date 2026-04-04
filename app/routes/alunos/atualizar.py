@@ -1,19 +1,25 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, status, Form
+from typing import List, Optional
 from sqlalchemy.orm import Session
 import app.database as database, app.models as models, app.schemas as schemas
 
 router = APIRouter()
 
 @router.put("/{aluno_id}", response_model=schemas.Aluno)
-def atualizar_aluno(aluno_id: int, aluno_dados: schemas.AlunoUpdate, db: Session = Depends(database.get_db)):
+def atualizar_aluno(
+    aluno_id: int, 
+    nome: Optional[str] = Form(None), 
+    email: Optional[str] = Form(None), 
+    db: Session = Depends(database.get_db)
+):
     db_aluno = db.query(models.Aluno).filter(models.Aluno.id == aluno_id).first()
     if not db_aluno:
-        raise HTTPException(status_code=404, detail="Aluno não encontrado")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Aluno não encontrado")
     
-    if aluno_dados.nome:
-        db_aluno.nome = aluno_dados.nome
-    if aluno_dados.email:
-        db_aluno.email = aluno_dados.email
+    if nome:
+        db_aluno.nome = nome
+    if email:
+        db_aluno.email = email
 
     db.commit()
     db.refresh(db_aluno)
