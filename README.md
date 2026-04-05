@@ -3,8 +3,8 @@
 API robusta para gerenciamento de alunos, cursos e matrículas, com regras de negócio integradas e validação automática.
 
 ## 🚀 Link da Aplicação
-- **API Online:** `https://api-matricula-api.onrender.com`
-- **Documentação Swagger:** `https://api-matricula-api.onrender.com/docs`   (para acessar API, use esse link)
+- **API Online:** `https://api-matricula-e8ji.onrender.com`
+- **Documentação Swagger:** `https://api-matricula-e8ji.onrender.com/docs`   (para acessar API, use esse link)
 
 ## 🛠️ Tecnologias Utilizadas
 - FastAPI (Framework)
